@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Assnigment4</title>
+    <style>
+      .calculator {
+        width: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        box-sizing: border-box;
+      }
+      .button-calc {
+        width: 48px;
+        height: 48px;
+        margin: 5px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+      input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #4CAF50;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">Vaissov Sanzhar</span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="main.html" class="nav-link">20 tasks</a></li>
+          </ul>
+        </header>
+    </div>
+
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">To-do list</h2>
+      <div id="myDIV" class="header">
+        <input type="text" id="myInput" placeholder="write your task ...">
+        <button onclick="adding()" class="addBtn">Add</button>
+      </div>
+      <div class="row row-cols-1 row-cols-lg-1 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div class="card card-cover h-300 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-color: rgb(37, 37, 37); height: 400px; font-size: large; font-size: 25px;">
+            <ul id="myUL">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">Number Sorter</h2>
+      <div>
+        <form id="numberForm" style="margin: 100 0 0 100;">
+          <label for="numbers">Enter numbers separated by commas:</label>
+          <input type="text" id="numbers" name="numbers" required>
+        
+          <label for="order">Sort order:</label>
+          <select id="order" name="order">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        
+          <button type="submit" style="background-color: rgb(252, 70, 63); border-radius: 10%; color: aliceblue;">Sort</button>
+        </form>
+      </div>
+      <div class="row row-cols-1 row-cols-lg-1 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div class="card card-cover h-300 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-color: rgb(37, 37, 37); height: 75px; font-size: large;">
+            <div id="result" style="padding-left: 20px; padding-top: 20px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">Calculator</h2>
+      <div class="calculator">
+        <input type="text" id="display" readonly>
+
+        <button onclick="appendNumber('7')" class="button-calc">7</button>
+        <button onclick="appendNumber('8')" class="button-calc">8</button>
+        <button onclick="appendNumber('9')" class="button-calc">9</button>
+        <button onclick="setOperator('+')" class="button-calc">+</button>
+
+        <button onclick="appendNumber('4')" class="button-calc">4</button>
+        <button onclick="appendNumber('5')" class="button-calc">5</button>
+        <button onclick="appendNumber('6')" class="button-calc">6</button>
+        <button onclick="setOperator('-')" class="button-calc">-</button>
+
+        <button onclick="appendNumber('1')" class="button-calc">1</button>
+        <button onclick="appendNumber('2')" class="button-calc">2</button>
+        <button onclick="appendNumber('3')" class="button-calc">3</button>
+        <button onclick="setOperator('*')" class="button-calc">*</button>
+
+        <button onclick="appendNumber('0')" class="button-calc">0</button>
+        <button onclick="clearDisplay()" class="button-calc">C</button>
+        <button onclick="calculate()" class="button-calc">=</button>
+        <button onclick="setOperator('/')" class="button-calc">/</button>
+      </div>
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">Tax Calculator</h2>
+      <div>
+        <label for="temperature">Enter the price:</label>
+        <input type="number" id="temperature"><br><br>
+        <label for="unit">Select unit:</label>
+        <select id="unit">
+          <option value="C">Tenge</option>
+          <option value="F">Usdt</option>
+        </select><br><br>
+        <button onclick="convertTemperature()">Calculate</button>
+      </div>
+      <div class="row row-cols-1 row-cols-lg-1 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div class="card card-cover h-300 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-color: rgb(37, 37, 37); height: 75px; font-size: large;">
+            <div id="res_2" style="padding-left: 20px; padding-top: 20px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="https://github.com/vvsrq" class="nav-link px-2 text-body-secondary">Github</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2024 vvsr_qer, Inc</p>
+      </footer>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
